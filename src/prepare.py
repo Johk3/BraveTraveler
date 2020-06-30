@@ -1,4 +1,4 @@
-class Fetch:
+class Prepare:
     """INSERT TEXT"""
     def __init__(self, data):
         self.data = data
