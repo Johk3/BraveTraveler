@@ -1,18 +1,9 @@
 from src.prepare import Prepare
-from src.log import *
 from sanic import Sanic
 from sanic import response
 from sanic.response import json
 from sanic.views import HTTPMethodView
 from sanic_cors import CORS, cross_origin
-
-# --- DEV nodemon stuff
-import os
-import atexit
-def exit_handler():
-    os.system("pkill python")
-atexit.register(exit_handler)
-# --- DEV nodemon stuff
 
 app = Sanic(__name__)
 CORS(app)
