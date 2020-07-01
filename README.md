@@ -5,3 +5,4 @@ BraveTraveler is a data collection, analysis, and monitoring system for WLAN net
 ## Requirements
 
 * [sanic](https://github.com/huge-success/sanic)
+* [sanic-cors](https://github.com/ashleysommer/sanic-cors)
