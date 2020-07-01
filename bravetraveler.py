@@ -1,5 +1,4 @@
 from src.prepare import Prepare
-from src.log import *
 from sanic import Sanic
 from sanic import response
 from sanic.response import json
@@ -15,7 +14,11 @@ class BraveTraveler(HTTPMethodView):
         return 202
     async def post(self, request):
         Prepare(request.json)
-        return 202
+        return response.json(
+        {'message': 'Gotti'},
+        headers={'X-Served-By': 'sanic'},
+        status=200
+    )
 
 app.add_route(BraveTraveler.as_view(), "/api/bravetraveler")
 if __name__ == "__main__":
