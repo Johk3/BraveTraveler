@@ -8,4 +8,5 @@ class Prepare:
 
     def parse(self):
         """Parse the data to work with frontend"""
-        LOG_INFO(self.data)
+        for key, value in self.data.items():
+            LOG_INFO(value)
