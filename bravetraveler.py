@@ -1,4 +1,5 @@
 from src.prepare import Prepare
+from src.log import *
 from sanic import Sanic
 from sanic import response
 from sanic.response import json

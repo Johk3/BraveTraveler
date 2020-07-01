@@ -1,4 +1,4 @@
-from log import *
+from src.log import *
 
 class Prepare:
     """INSERT TEXT"""
