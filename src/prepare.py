@@ -1,5 +1,6 @@
 from src.log import *
 
+
 class Prepare:
     """INSERT TEXT"""
     def __init__(self, data):

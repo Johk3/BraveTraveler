@@ -8,6 +8,7 @@ from sanic_cors import CORS, cross_origin
 app = Sanic(__name__)
 CORS(app)
 
+
 class BraveTraveler(HTTPMethodView):
     """Monitoring service for incoming data"""
     async def get(self, request):
@@ -15,10 +16,10 @@ class BraveTraveler(HTTPMethodView):
     async def post(self, request):
         Prepare(request.json)
         return response.json(
-        {'message': 'Gotti'},
-        headers={'X-Served-By': 'sanic'},
-        status=200
-    )
+            {'message': 'Gotti'},
+            headers={'X-Served-By': 'sanic'},
+            status=200
+        )
 
 app.add_route(BraveTraveler.as_view(), "/api/bravetraveler")
 if __name__ == "__main__":
