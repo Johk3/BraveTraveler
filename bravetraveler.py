@@ -10,7 +10,7 @@ app = Sanic(__name__)
 key = open("key", "r")
 auth = SanicTokenAuth(app, secret_key=key.read().strip(),
                       header="X-Brave-Traveler-Auth-Token")
-# CORS(app)
+CORS(app)
 
 
 @app.post("/api/bravetraveler")
