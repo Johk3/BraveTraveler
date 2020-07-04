@@ -24,4 +24,4 @@ async def bravetraveler(request):
     )
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8080, debug=True, access_log=False, workers=5)
+    app.run(host="0.0.0.0", port=8080, access_log=False, workers=5)
