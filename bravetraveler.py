@@ -1,4 +1,5 @@
-from src.prepare import Prepare
+from src.data_transmitter import Transmitter
+from src.log import *
 from sanic import Sanic
 from sanic import response
 from sanic.response import json
@@ -12,11 +13,14 @@ auth = SanicTokenAuth(app, secret_key=key.read().strip(),
                       header="X-Brave-Traveler-Auth-Token")
 CORS(app)
 
+LOG_INFO("Creating IPC transmitter")
+transmitter = Transmitter()
+
 
 @app.post("/api/bravetraveler")
 @auth.auth_required
 async def bravetraveler(request):
-    Prepare(request.json)
+    transmitter.parse_and_send(request.json)
     return response.json(
         {'message': 'gotti'},
         headers={'x-served-by': 'bravetraveler'},
