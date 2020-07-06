@@ -7,7 +7,7 @@ import socket
 
 
 class Transmitter:
-    """INSERT TEXT"""
+    """Transmits the data between the server and the frontend"""
     def __init__(self):
         # Create socket
         self.server_address = "./.ipc_socket"
@@ -21,11 +21,9 @@ class Transmitter:
             LOG_FAIL(f"Could not connect to socket: {e}")
             exit(1)
 
-
     def parse_and_send(self, data):
         data = self.parse(data)
         self.send(data)
-
 
     def parse(self, data):
         """Parse the data to work with frontend"""
@@ -33,8 +31,7 @@ class Transmitter:
             LOG_INFO(f"Parsing {key}:{value}")
         return data
 
-
     def send(self, data):
         """Send data to frontend over local socket"""
         LOG_INFO(f"Sending data over IPC")
-        self.sock.sendall("asd".encode())
+        self.sock.sendall(str(data).encode())
