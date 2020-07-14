@@ -51,7 +51,11 @@ class App extends React.Component {
         <h1>
           BraveTraveler - Monitoring
         </h1>
-        <CanvasJSChart options={options}/>
+        <div class="row">
+          <div class="column">
+            <CanvasJSChart options={options}/>
+          </div>
+        </div>
       </header>
     </div>
     )
