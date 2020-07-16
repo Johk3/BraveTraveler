@@ -7,9 +7,36 @@ var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 
 class App extends React.Component {
+  state = {
+    data: ""
+  }
+
   constructor() {
     super();
     this.generateDataPoints = this.generateDataPoints.bind(this);
+  }
+
+  componentDidMount() {
+    this.getData()
+    this.interval = setInterval(() => {
+      this.getData()
+    }, 5000)
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval)
+  }
+
+  getData() {
+    fetch("https://api.chucknorris.io/jokes/random")
+      .then(res => {
+        return res.json()
+      })
+      .then(res => {
+        this.setState({
+          data: res.value
+        })
+      })
   }
 
   generateDataPoints(noOfDps) {
@@ -51,6 +78,7 @@ class App extends React.Component {
         <h1>
           BraveTraveler - Monitoring
         </h1>
+        <p>{this.state.data}</p>
         <CanvasJSChart options={options}/>
         <CanvasJSChart options={options}/>
         <CanvasJSChart options={options}/>
