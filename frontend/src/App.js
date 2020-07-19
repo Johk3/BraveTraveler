@@ -2,13 +2,15 @@ import React from 'react';
 import logo from './logo.svg';
 import CanvasJSReact from './canvasjs.react'
 import './App.css';
+import { Button } from '@material-ui/core';
 
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 
 class App extends React.Component {
   state = {
-    data: ""
+    data: "",
+    paused: false
   }
 
   constructor() {
@@ -17,10 +19,12 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    if (!this.state.paused){
     this.getData()
     this.interval = setInterval(() => {
       this.getData()
     }, 5000)
+    }
   }
 
   componentWillUnmount() {
@@ -48,6 +52,14 @@ class App extends React.Component {
       xVal++;
     }
     return dps;
+  }
+
+  pauseStart() {
+    if(this.state.paused){
+      this.state.paused = false
+    } else {
+      this.state.paused = true
+    }
   }
 
   render() {
@@ -79,6 +91,7 @@ class App extends React.Component {
           BraveTraveler - Monitoring
         </h1>
         <p>{this.state.data}</p>
+        <Button onClick={this.pauseStart} color="secondary" variant="contained">PAUSE</Button>
         <CanvasJSChart options={options}/>
         <CanvasJSChart options={options}/>
         <CanvasJSChart options={options}/>
