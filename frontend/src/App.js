@@ -54,12 +54,8 @@ class App extends React.Component {
     return dps;
   }
 
-  pauseStart() {
-    if(this.state.paused){
-      this.state.paused = false
-    } else {
-      this.state.paused = true
-    }
+  handlePauseChange = () => {
+    this.setState({ paused: true })
   }
 
   render() {
@@ -91,7 +87,7 @@ class App extends React.Component {
           BraveTraveler - Monitoring
         </h1>
         <p>{this.state.data}</p>
-        <Button onClick={this.pauseStart} color="secondary" variant="contained">PAUSE</Button>
+        <Button onClick={this.handlePauseChange} color="secondary" variant="contained">PAUSE</Button>
         <CanvasJSChart options={options}/>
         <CanvasJSChart options={options}/>
         <CanvasJSChart options={options}/>
