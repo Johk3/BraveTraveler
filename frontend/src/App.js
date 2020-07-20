@@ -1,14 +1,9 @@
 import React from 'react';
 import logo from './logo.svg';
-import CanvasJSReact from './canvasjs.react'
 import './App.css';
-import { Button } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 
-
-
-var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 function Copyright() {
   return (
@@ -23,71 +18,7 @@ function Copyright() {
   )
 }
 
-class App extends React.Component {
-  state = {
-    data: "",
-  }
-
-  constructor() {
-    super();
-    this.generateDataPoints = this.generateDataPoints.bind(this);
-  }
-
-  componentDidMount() {
-    this.getData()
-    this.interval = setInterval(() => {
-      this.getData()
-    }, 5000)
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.interval)
-  }
-
-  getData() {
-    fetch("https://api.chucknorris.io/jokes/random")
-      .then(res => {
-        return res.json()
-      })
-      .then(res => {
-        this.setState({
-          data: res.value
-        })
-      })
-  }
-
-  generateDataPoints(noOfDps) {
-    var xVal = 1, yVal = 100;
-    var dps = [];
-    for(var i = 0; i < noOfDps; i++) {
-      yVal = yVal +  Math.round(5 + Math.random() *(-5-5));
-      dps.push({x: xVal,y: yVal});	
-      xVal++;
-    }
-    return dps;
-  }
-
-  render() {
-    const options = {
-      theme: "dark1", // "light1", "dark1", "dark2"
-      animationEnabled: true,
-      zoomEnabled: true,
-      title: {
-        text: "Audio Interception",
-      },
-      axisY: {
-        includeZero: false,
-        title: "Decibels",
-      },
-      axisX: {
-        title: "Iterations",
-      },
-      data: [{
-        type: "area",
-        dataPoints: this.generateDataPoints(500),
-      }]
-    }
-
+function App() {
     return(
     <div className="App">
       <header className="App-header">
@@ -95,15 +26,10 @@ class App extends React.Component {
         <h1>
           BraveTraveler - Monitoring
         </h1>
-        <p>{this.state.data}</p>
-        <Button onClick={this.handlePauseChange} color="secondary" variant="contained">PAUSE</Button>
-        <CanvasJSChart options={options}/>
-        <CanvasJSChart options={options}/>
         <Copyright/>
       </header>
     </div>
     )
   }
-}
 
 export default App;
