@@ -3,9 +3,25 @@ import logo from './logo.svg';
 import CanvasJSReact from './canvasjs.react'
 import './App.css';
 import { Button } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
+import Link from '@material-ui/core/Link';
+
+
 
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
+function Copyright() {
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      {"Copyright © "}
+      <Link color="inherit" href="https://jastonmatter.com">
+        JastonMatter
+      </Link>{" "}
+      {new Date().getFullYear()}
+      {"."}
+    </Typography>
+  )
+}
 
 class App extends React.Component {
   state = {
@@ -88,8 +104,6 @@ class App extends React.Component {
         </h1>
         <p>{this.state.data}</p>
         <Button onClick={this.handlePauseChange} color="secondary" variant="contained">PAUSE</Button>
-        <CanvasJSChart options={options}/>
-        <CanvasJSChart options={options}/>
         <CanvasJSChart options={options}/>
         <CanvasJSChart options={options}/>
       </header>
