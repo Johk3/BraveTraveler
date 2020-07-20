@@ -106,6 +106,7 @@ class App extends React.Component {
         <Button onClick={this.handlePauseChange} color="secondary" variant="contained">PAUSE</Button>
         <CanvasJSChart options={options}/>
         <CanvasJSChart options={options}/>
+        <Copyright/>
       </header>
     </div>
     )
