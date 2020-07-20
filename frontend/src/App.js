@@ -26,7 +26,6 @@ function Copyright() {
 class App extends React.Component {
   state = {
     data: "",
-    paused: false
   }
 
   constructor() {
@@ -35,12 +34,10 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    if (!this.state.paused){
     this.getData()
     this.interval = setInterval(() => {
       this.getData()
     }, 5000)
-    }
   }
 
   componentWillUnmount() {
@@ -68,10 +65,6 @@ class App extends React.Component {
       xVal++;
     }
     return dps;
-  }
-
-  handlePauseChange = () => {
-    this.setState({ paused: true })
   }
 
   render() {
