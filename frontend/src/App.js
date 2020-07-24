@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
+import Graphs from './Components/Graphs';
 
 
 function Copyright() {
@@ -26,6 +27,7 @@ function App() {
         <h1>
           BraveTraveler - Monitoring
         </h1>
+        <Graphs/>
         <Copyright/>
       </header>
     </div>
