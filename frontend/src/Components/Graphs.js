@@ -1,4 +1,6 @@
 import React from "react"
+import CanvasJSReact from "../canvasjs.react"
+
 
 class Graphs extends React.Component {
   state = {
@@ -33,8 +35,15 @@ class Graphs extends React.Component {
   }
 
   render() {
+    var CanvasJSChart = CanvasJSReact.CanvasJSChart;
+    var dps = []
+    dps.push({x: 1,y: 1});	
+
     return(
-      <h4>{this.state.data}</h4>
+      <div>
+        <h4>{this.state.data}</h4>
+        <CanvasJSChart options={dps}/>
+      </div>
     )
   }
 }
